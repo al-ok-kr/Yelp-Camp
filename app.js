@@ -129,6 +129,7 @@ const styleSrcUrls = [
     "https://api.tiles.mapbox.com/",
     "https://fonts.googleapis.com/",
     "https://use.fontawesome.com/",
+    "https://cdnjs.cloudflare.com"
 ];
 const connectSrcUrls = [
     "https://api.mapbox.com/",
@@ -136,7 +137,9 @@ const connectSrcUrls = [
     "https://b.tiles.mapbox.com/",
     "https://events.mapbox.com/",
 ];
-const fontSrcUrls = [];
+const fontSrcUrls = [
+    "https://cdnjs.cloudflare.com"
+];
 app.use(
     helmet.contentSecurityPolicy({
         directives: {
@@ -169,6 +172,9 @@ app.use('/', user)
 
 app.get('/', (req, res) => {
     res.render('home')
+});
+app.get('/Aboutme', (req, res) => {
+    res.render('About')
 });
 
 app.all('*', (req, res, next) => {
