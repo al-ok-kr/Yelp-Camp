@@ -62,3 +62,11 @@ window.addEventListener('scroll', () => {
     }
 
 })
+window.addEventListener('ontouchMove', () => {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    if (scrollTop + clientHeight >= scrollHeight - 3) {
+        showLoading();
+        setTimeout(addCamp, 1000)
+    }
+
+})
