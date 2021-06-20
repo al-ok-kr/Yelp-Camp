@@ -13,7 +13,6 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport')
 const localStrategy = require('passport-local');
-
 const catchError = require('./utils/catchError');
 const ExpressError = require('./utils/ExpressError');
 const campgrounds = require('./routes/campgrounds')
@@ -24,6 +23,7 @@ const User = require('./models/user')
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet')
 const MongoStore = require("connect-mongo")
+//process.env.MONGO_ATLAS || 
 const dbUrl = process.env.MONGO_ATLAS || 'mongodb://localhost:27017/yelp-camp';
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
@@ -91,6 +91,10 @@ const sessionConfig = {
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
 }
+
+
+
+
 app.use(session(sessionConfig))
 app.use(flash());
 app.use(mongoSanitize())
@@ -138,7 +142,8 @@ const connectSrcUrls = [
     "https://events.mapbox.com/",
 ];
 const fontSrcUrls = [
-    "https://cdnjs.cloudflare.com"
+    "https://cdnjs.cloudflare.com",
+    "https://fonts.gstatic.com"
 ];
 app.use(
     helmet.contentSecurityPolicy({
